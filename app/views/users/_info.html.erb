@@ -19,8 +19,8 @@
   <tr>
     <th>followers</th>
     <th>
-      <%= link_to follower_user_path(user) do %>
-        <%= user.followers.count %>
+      <%= link_to followers_user_path(user) do %>
+        <%= user.followeds.count %>
       <% end %>
     </th>
   </tr>
@@ -36,7 +36,7 @@
   </td>
   </tr>
 </table>
-　
+
 <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
