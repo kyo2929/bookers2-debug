@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: "homes#top"
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+  
+  get '/search', to: 'searches#search'
 
   get "home/about", to: 'homes#about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
