@@ -23,6 +23,9 @@
           <td>
             コメント数:<%= @book.book_comments.count %>
           </td>
+          <td>
+            閲覧数:<%= @book.view_counts.count %>
+          </td>
           <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
@@ -38,7 +41,7 @@
           <td>
             <% @book.book_comments.each do |book_comment| %>
               <%= book_comment.comment %>
-              </td>
+          </td>
               <% if book_comment.user == current_user %>
               <td>
                 <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
