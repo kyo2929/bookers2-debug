@@ -11,10 +11,10 @@ class User < ApplicationRecord
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
   has_many :following_users, through: :followers, source: :followed
-  has_many :follower_users, through: :followeds, source: :follower
+  has_many :follower_users, through: :followeds, source: :followerl
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_many :vi_counts, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   def following?(user)
     following_users.include?(user)
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(name: content)
@@ -49,7 +49,7 @@ class User < ApplicationRecord
     else
       User.where('name LIKE ?', '%'+content+'%')
     end
-  
+
   end
 
 end
